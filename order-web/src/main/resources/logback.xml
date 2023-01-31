@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2018, Magnum Research Ltd. All rights reserved.
+  ~
+  ~ This program and the accompanying materials (“Program”)
+  ~ whether on any media or in any form,
+  ~ are exclusive property of Magnum Research Limited (“Magnum”).
+  ~ Without prior written authorization from Magnum,
+  ~ any person shall not reproduce, modify, summarize,
+  ~ reverse-engineer, decompile or disassemble the Program,
+  ~ or disclose any part of this Program to any other person.
+  ~
+  ~ Magnum reserves all rights not expressly stated herein.
+-->
+
+<configuration>
+<!--
+-->
+<!--    <SpringProperty name="logDir" source="log.path" defaultValue="logs"/>-->
+    <property name="logDir" value="logs"/>
+
+    <property scope="context" name="generalLog" value="generalLog.log"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{5} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+
+    <appender name="logfile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Prudent>true</Prudent> 
+        <file>${logDir}/${generalLog}</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>UTF-8</charset>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{5} - %msg%n</Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${logDir}/%d{yyyyMMdd}/${generalLog}
+            </fileNamePattern>
+            <!-- <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>20MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy> -->
+        </rollingPolicy>
+    </appender>
+
+
+    <!-- Strictly speaking, the level attribute is not necessary since -->
+    <!-- the level of the root level is set to DEBUG by default.       -->
+    <root level="INFO">
+        <appender-ref ref="logfile"/>
+    </root>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>

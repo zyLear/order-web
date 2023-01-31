@@ -1,0 +1,321 @@
+.custom-container {
+    width: 1300px;
+    margin: 10px auto;
+    border: 1px solid black;
+    min-height: 1300px;
+    border-radius: 15px;
+    background-color: #F0FFFF;
+    padding: 5px;
+}
+
+.custom-page-head {
+    width: 100%;
+    height: 150px;
+    background-color: #7aa6da;
+    border-radius: 15px;
+}
+
+.custom-page-main {
+    width: 100%;
+    min-height: 1000px;
+    background-color: #ffffec;
+    border-radius: 15px;
+}
+
+.custom-content-left {
+    float: left;
+    width: 75%;
+    min-height: 900px;
+    background-color: snow;
+    border-radius: 15px;
+    padding: 1% 2%;
+}
+
+.custom-article-title {
+    text-align: center;
+    font-weight: 400;
+    font-size: 30px;
+    padding: 20px;
+}
+
+.custom-content-right {
+    float: left;
+    width: 25%;
+    min-height: 900px;
+    background-color: #f0efd0;
+    border-radius: 15px;
+}
+
+.right-box {
+    width: 96%;
+    margin: 2%;
+    min-height: 300px;
+    background-color: #5bc0de;
+    border-radius: 15px;
+}
+
+/*p {*/
+/*!*text-indent: 2em*!*/
+/*}*/
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    font-size: 18px;
+    /*font-size: 40px;*/
+}
+
+.custom-navigation {
+    width: 100%;
+    background-color: #101010;
+    /*height: 60px;*/
+    border-radius: 5px;
+    padding: 0 30px;
+}
+
+.custom-navigation-head {
+    float: left;
+    font-size: 20px;
+    padding: 15px;
+    color: darkgrey;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.custom-navigation-head:hover {
+    color: ghostwhite;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.custom-navigation-left-item:hover {
+    color: ghostwhite;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.custom-navigation-right-item:hover {
+    color: ghostwhite;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.custom-navigation-left-item {
+    float: left;
+    font-size: 20px;;
+    padding: 15px;
+    color: darkgrey;
+    text-decoration: none;
+}
+
+.custom-navigation-right-item {
+    float: right;
+    font-size: 20px;;
+    padding: 15px;
+    color: darkgrey;
+    text-decoration: none;
+}
+
+.custom-clear {
+    clear: both;
+}
+
+.custom-list {
+    /*background-color: #fff;*/
+    padding: 10px 16px;
+    border: 1px solid #EFEFEF;
+    background-color: #FFF;
+    line-height: 46px;
+}
+
+.custom-list-item {
+    margin-top: 1px;
+    margin-bottom: -1px;
+    height: 46px;
+    line-height: 46px;
+    border-bottom: 1px dashed #EAEAEA;
+    font-size: 14px;
+    padding-left: 14px;
+}
+
+.custom-video-list-img {
+    height: 100%;
+}
+
+.custom-video-list-item {
+    float: left;
+    width: 48%;
+    margin: 5px 1%;
+    line-height: 36px;
+    border: 1px dashed #EAEAEA;
+    font-size: 14px;
+    padding-left: 14px;
+}
+
+.custom-list-item a {
+    color: #333;
+}
+
+.custom-list-item a:hover {
+    cursor: pointer;
+    color: #06b6ef;
+    text-decoration: none;
+
+}
+
+.custom-list-date {
+    float: right;
+    font-size: 12px;
+    color: #999;
+    margin-left: 5px;
+}
+
+.custom-page-box {
+    padding: 35px 0;
+    font-size: 0;
+    text-align: center;
+}
+
+.custom-page-input {
+    position: relative;
+    width: 50px;
+    padding: 0 9px;
+    height: 23px;
+    line-height: 23px;
+    border: 1px solid #CCC;
+    font-size: 14px;
+    display: inline-block;
+    margin: 0 2px;
+    top: -1px;
+}
+
+.custom-page-button {
+    padding: 0 9px;
+    height: 23px;
+    line-height: 23px;
+    border: 1px solid #CCC;
+    font-size: 14px;
+    display: inline-block;
+    margin: 0 2px;
+    color: #333;
+}
+
+.custom-page-button-head {
+    margin-left: 30px;
+}
+
+.custom-page-button:hover {
+    cursor: pointer;
+    border-color: #7BD827;
+    color: salmon;
+    text-decoration: none;
+}
+
+.custom-page-button-active {
+    padding: 0 9px;
+    height: 23px;
+    line-height: 23px;
+    border: 1px solid #CCC;
+    font-size: 14px;
+    display: inline-block;
+    margin: 0 2px;
+    color: #333;
+    background-color: #7BD827;
+    /*border-color: #7BD827;*/
+}
+
+.custom-page-button-active:hover {
+    cursor: pointer;
+    border-color: #7BD827;
+    color: salmon;
+    text-decoration: none;
+}
+
+.custom-article-post-time {
+    padding: 3px 15px;
+    text-align: right;
+    font-size: 17px;
+    font-weight: 500;
+    color: teal;
+    border-bottom: 1px solid #bce8f1;
+}
+
+.custom-path {
+    width: 100%;
+    padding: 2px 5px;
+    text-align: left;
+    font-size: 15px;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.custom-path-button {
+    padding: 0 3px;
+    cursor: pointer;
+    /*display: inline-block;*/
+}
+
+.custom-embed {
+    width: 700px;
+    height: 500px;
+    margin: 30px auto;
+}
+
+.custom-after-div {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    width: 100px;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: -15px;
+}
+
+.custom-after-div div{
+    padding: 10px 20px;
+}
+
+.custom-navigation-left-item:hover > div.custom-after-div {
+    display: block;
+}
+
+.custom-after-div:hover{
+    display: block;
+}
+
+.custom-show {
+    display: block;
+}
+
+.custom-hide {
+    display: none;
+}
+
+
+.custom-game-list{
+    text-align: center;
+    padding: 50px;
+    font-size: 50px;
+    font-family: "YaHei Consolas Hybrid", Consolas, "微软雅黑", "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", Helvetica, "Monaco", courier, monospace;
+}
+
+
+/*****************fix style*********************/
+
+.custom-content-left img {
+    max-width: 90%;
+}
+
+.danmu-container {
+    display: none;
+}
+
+.danmu-bar {
+    display: none;
+}
