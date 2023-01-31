@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ok
+
+
+<div class="custom-article-title" th:text="${orderInfo.phoneNumber}">title</div>
+<th:block th:utext="${orderInfo.remark}">content</th:block>
+
+<div class="custom-article-title" th:text="${orderInfo.remark}">title111</div>
+
+</body>
+</html>
