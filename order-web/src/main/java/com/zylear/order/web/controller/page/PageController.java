@@ -20,9 +20,9 @@ public class PageController {
 
     @GetMapping("/list")
     public ModelAndView hello() {
-        Optional<OrderInfoEntity> byId = orderInfoDao.findById(1L);
+//        Optional<OrderInfoEntity> byId = orderInfoDao.findById(1L);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("orderInfo", byId.get());
+//        modelAndView.addObject("orderInfo", byId.get());
         modelAndView.setViewName("ok");
         return modelAndView;
     }
