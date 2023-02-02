@@ -1,4 +1,4 @@
-package com.zylear.order.web.bean;
+package com.zylear.order.web.bean.base;
 
 import lombok.Data;
 

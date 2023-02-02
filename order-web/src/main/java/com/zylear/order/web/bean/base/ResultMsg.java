@@ -1,6 +1,4 @@
-package com.zylear.commons.exception;
-
-import lombok.Data;
+package com.zylear.order.web.bean.base;
 
 /**
  * @author xiezongyu

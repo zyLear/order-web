@@ -1,12 +1,11 @@
 
 
-package com.zylear.commons.util;
+package com.zylear.order.web.util;
 
-import com.zylear.commons.bean.Result;
-import com.zylear.commons.exception.ResultMsg;
+import com.zylear.order.web.bean.base.Result;
+import com.zylear.order.web.bean.base.ResultMsg;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -73,7 +72,6 @@ public class ResultUtil {
         Result<T> result = new Result<>();
         result.setCode(code);
         result.setMessage(message);
-        result.setArguments(args);
         result.setData(data);
         return result;
     }

@@ -1,7 +1,8 @@
 
 
-package com.zylear.commons.exception;
+package com.zylear.order.web.exception;
 
+import com.zylear.order.web.bean.base.ResultMsg;
 import org.springframework.core.NestedRuntimeException;
 
 /**
@@ -21,7 +22,7 @@ public class CommonException extends NestedRuntimeException {
         super(resultMsg.getMessage());
         this.code = resultMsg.getCode();
     }
-    public CommonException(String msg, int code) {
+    public CommonException( int code,String msg) {
         super(msg);
         this.code = code;
     }

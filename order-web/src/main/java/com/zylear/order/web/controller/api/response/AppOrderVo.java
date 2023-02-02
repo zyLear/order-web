@@ -1,13 +1,12 @@
-package com.zylear.order.web.controller.page.request;
+package com.zylear.order.web.controller.api.response;
 
 import lombok.Data;
 
-import javax.persistence.*;
 import java.util.Date;
 
 
 @Data
-public class CreateOrderRequest {
+public class AppOrderVo {
 
     private Long id;
 
@@ -17,8 +16,8 @@ public class CreateOrderRequest {
 
     private Integer orderStatus;
 
-    private Date finishTime;
+    private String finishTime;
 
-    private Date createTime;
+    private String createTime;
 
 }
