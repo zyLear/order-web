@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<!--    <script src="../resources/vendor/jquery/jquery.min.js"></script>-->
+
+    <!-- Import style -->
+    <!--    <link-->
+    <!--            rel="stylesheet"-->
+    <!--            href="//cdn.jsdelivr.net/npm/element-plus/dist/index.css"-->
+    <!--    />-->
+    <!--    &lt;!&ndash; Import Vue 3 &ndash;&gt;-->
+    <!--    <script src="//cdn.jsdelivr.net/npm/vue@3"></script>-->
+    <!--    &lt;!&ndash; Import component library &ndash;&gt;-->
+    <!--    <script src="//cdn.jsdelivr.net/npm/element-plus"></script>-->
+    <!--    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.45/dist/vue.global.min.js"></script>-->
+    <!--    <script src="https://cdn.jsdelivr.net/npm/element-plus@2.2.28/dist/index.full.min.js"></script>-->
+    <!--    <link href="https://cdn.jsdelivr.net/npm/element-plus@2.2.28/dist/index.min.css" rel="stylesheet">-->
+    <!--    <meta name="viewport" content="width=device-width,initial-scale=1.0" />-->
+    <!--    <script src="https://unpkg.com/vue@next"></script>/-->
+    <!--     import CSS -->
+    <!--    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">-->
+    <!--     import JavaScript -->
+    <!--    <script src="https://unpkg.com/element-plus"></script>-->
+
+
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!-- axios 请求 -->
+    <!--    <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>-->
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+    <title>测试</title>
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+
+<div id="app">
+    <el-button>{{ message }}</el-button>
+    ok
+
+
+    <!--    <div class="custom-article-title" th:text="${orderInfo.phoneNumber}">title</div>-->
+    <!--    <th:block th:utext="${orderInfo.remark}">content</th:block>-->
+
+    <!--    <div class="custom-article-title" th:text="${orderInfo.remark}">title111</div>-->
+
+    <div style="margin: 20px;">
+        <el-table :data="tableData" border stripe  style="width: 100%">
+            <el-table-column prop="phoneNumber" label="phoneNumber" width="180"></el-table-column>
+            <el-table-column prop="remark" label="remark" width="180"></el-table-column>
+            <el-table-column prop="createTime" label="createTime" width="180"></el-table-column>
+            <el-table-column prop="orderStatus" label="orderStatus">
+                <template slot-scope="scope">
+                    <el-tag :type="scope.row.orderStatus == 1 ? 'primary' : 'success'" disable-transitions>
+                        {{scope.row.orderStatus}}
+                    </el-tag>
+                </template>
+            </el-table-column>
+        </el-table>
+    </div>
+
+
+</div>
+
+
+<!-- 引入 Vue 和 Vant 的 JS 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<!-- 引入 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<!-- axios 请求 -->
+<script type="text/javascript" src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+<script>
+
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            message: "Hello Element Plus",
+            tableData: [
+                {
+                    date: '2016-05-03',
+                    name: 'Tom',
+                    address: 'No. 189, Grove St, Los Angeles',
+                }
+            ]
+        },
+        methods: {
+            getData1() {
+
+            },
+        }
+
+    });
+
+    window.onload = () => {
+        var api = "http://localhost/app-order/api/order/list";
+        axios
+            // 3.1url地址
+            .get(api)
+            // 3.2成功时回调函数
+            .then((data) => {
+                console.log(data);
+                vue.tableData=data.data
+            })
+            //3.3失败时回调函数
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
