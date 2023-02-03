@@ -8,7 +8,7 @@
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
-    <title>测试</title>
+    <title>订单列表</title>
     <!-- 引入样式文件 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 </head>
@@ -20,9 +20,16 @@
             <h2>订单列表</h2>
         </div>
 
+        <!--        <div th:text="${#httpServletRequest.requestURL}"></div>-->
+        <!--        &lt;!&ndash; http://127.0.0.1/article/bbbbb &ndash;&gt;-->
+
+        <!--        <div th:text="${#httpServletRequest.getScheme() + '://' + #httpServletRequest.getServerName() + ':' + #request.getServerPort()}"></div>-->
+        <!--        &lt;!&ndash; 根目录:http://127.0.0.1:80 &ndash;&gt;-->
+
+
         <el-form :inline="true" class="demo-form-inline">
             <el-form-item label="手机号码">
-                <el-input v-model="keyword" placeholder="手机号码"  @input="getOrderList()" clearable></el-input>
+                <el-input v-model="keyword" placeholder="手机号码" @input="getOrderList()" clearable></el-input>
             </el-form-item>
             <el-form-item label="订单状态">
                 <el-select v-model="orderStatus" @change="getOrderList()" placeholder="请选择订单状态">
@@ -35,25 +42,27 @@
                 </el-select>
             </el-form-item>
             <el-form-item>
-                <el-button  type="success" @click="toCreateOrder()">创建订单</el-button>
+                <el-button type="success" @click="toCreateOrder()">创建订单</el-button>
             </el-form-item>
         </el-form>
 
         <el-table :data="tableData" border stripe style="width: 100%">
-            <el-table-column prop="phoneNumber" label="手机号码" ></el-table-column>
-            <el-table-column prop="remark" label="备注" ></el-table-column>
+            <el-table-column prop="phoneNumber" label="手机号码"></el-table-column>
+            <el-table-column prop="remark" label="备注"></el-table-column>
             <el-table-column prop="createTime" label="创建时间" width="170px"></el-table-column>
             <el-table-column prop="orderStatus" label="订单状态" width="90px">
                 <template slot-scope="scope">
                     <el-tag :type="scope.row.orderStatus == 1 ? 'primary' : 'success'" disable-transitions>
-                                                {{scope.row.orderStatus==1 ?'未完成':'已完成'}}
+                        {{scope.row.orderStatus==1 ?'未完成':'已完成'}}
 
                     </el-tag>
                 </template>
             </el-table-column>
             <el-table-column label="操作" width="90px">
                 <template slot-scope="scope">
-                    <el-button size="mini" v-bind:disabled="scope.row.orderStatus !=1" type="primary" @click="completeOrder(scope.row.id)">完成</el-button>
+                    <el-button size="mini" v-bind:disabled="scope.row.orderStatus !=1" type="primary"
+                               @click="completeOrder(scope.row.id)">完成
+                    </el-button>
 
                 </template>
             </el-table-column>
@@ -72,7 +81,9 @@
 <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
 <script>
 
-    var vue = new Vue({
+
+    const appHost = /*[[${session.user.name}]];*/ 'http://localhost';
+    const vue = new Vue({
         el: '#app',
         data: {
             message: "Hello Element Plus",
@@ -89,7 +100,7 @@
         },
         methods: {
             getOrderList() {
-                var api = "http://localhost/app-order/api/order/list?orderStatus=" + this.orderStatus + "&keyword=" + this.keyword;
+                var api = appHost + '/app-order/api/order/list?orderStatus=' + this.orderStatus + '&keyword=' + this.keyword;
                 axios
                     // 3.1url地址
                     .get(api)
@@ -108,7 +119,7 @@
                     });
             },
             completeOrder(id) {
-                var api = "http://localhost/app-order/api/order/complete-order";
+                var api = appHost + '/app-order/api/order/complete-order';
                 axios
                     // 3.1url地址
                     .post(api, {"id": id})
@@ -129,7 +140,7 @@
                     });
             },
             toCreateOrder() {
-                location.href='http://localhost/app-order/page/order/create'
+                location.href = appHost + '/app-order/page/order/create'
             }
         },
 
