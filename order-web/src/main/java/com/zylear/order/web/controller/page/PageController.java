@@ -26,7 +26,7 @@ public class PageController {
     }
 
     @GetMapping("/create")
-    public ModelAndView hello() {
+    public ModelAndView create() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("create_order");
         return modelAndView;
