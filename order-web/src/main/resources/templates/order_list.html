@@ -20,10 +20,11 @@
             <h2>订单列表</h2>
         </div>
 
-<!--                <div th:text="${#httpServletRequest.requestURL}"></div>-->
+        <!--        <div th:text="${#httpServletRequest.requestURL}"></div>-->
         <!--        &lt;!&ndash; http://127.0.0.1/article/bbbbb &ndash;&gt;-->
 
-<!--                <div th:text="${#httpServletRequest.getScheme() + '://' + #httpServletRequest.getServerName() + ':' + #request.getServerPort()}"></div>-->
+<!--        <div th:text="${#httpServletRequest.getScheme() + '://' + #httpServletRequest.getServerName() + ':' + #request.getServerPort()}"></div>-->
+<!--        <div th:text="${#httpServletRequest.getContextPath()}"></div>-->
         <!--        &lt;!&ndash; 根目录:http://127.0.0.1:80 &ndash;&gt;-->
 
 
@@ -81,8 +82,8 @@
 <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
 <script th:inline="javascript">
 
+    const appHost = /*[[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #request.getServerPort()}]]*/'http://localhost';
 
-    const appHost = /*[[${#httpServletRequest.getScheme() + '://' + #httpServletRequest.getServerName() + ':' + #request.getServerPort()}]];*/ 'http://localhost';
     const vue = new Vue({
         el: '#app',
         data: {
