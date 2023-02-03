@@ -82,7 +82,7 @@
 <script>
 
 
-    const appHost = /*[[${session.user.name}]];*/ 'http://localhost';
+    const appHost = /*[[${#httpServletRequest.getScheme() + '://' + #httpServletRequest.getServerName() + ':' + #request.getServerPort()}]];*/ 'http://localhost';
     const vue = new Vue({
         el: '#app',
         data: {
