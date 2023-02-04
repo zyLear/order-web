@@ -28,7 +28,7 @@
             </el-form-item>
             <el-form-item label="金额" prop="price"
                           :rules="[{ type: 'number', message: '金额必须为数字'}]">
-                <el-input v-model.number="form.price"></el-input>
+                <el-input type="number" v-model.number="form.price"></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="onSubmit()">立即创建</el-button>
