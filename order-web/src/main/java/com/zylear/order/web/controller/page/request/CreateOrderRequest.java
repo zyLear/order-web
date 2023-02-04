@@ -16,10 +16,4 @@ public class CreateOrderRequest {
 
     private BigDecimal price;
 
-    private Integer orderStatus;
-
-    private Date finishTime;
-
-    private Date createTime;
-
 }

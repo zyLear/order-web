@@ -7,9 +7,9 @@ package com.zylear.order.web.bean.base;
 public enum ResultMsg {
 
     SUCCESS(0, "ok"),
-    INTERNAL_SERVER_ERROR(1000, "internal error"),
-    PARAMS_ERROR(1001, "params error"),
-    UNAUTHORIZED(1002, "unauthorized");
+    INTERNAL_SERVER_ERROR(1000, "出错了!!!"),
+    PARAMS_ERROR(1001, "参数错误"),
+    UNAUTHORIZED(1002, "未授权");
 
     ;
 
