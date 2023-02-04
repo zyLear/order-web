@@ -1,6 +1,10 @@
 package com.zylear.order.web.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -16,6 +20,9 @@ public class OrderInfoEntity {
 
     @Column(name = "remark")
     private String remark;
+
+    @Column(name = "price")
+    private BigDecimal price;
 
     @Column(name = "order_status")
     private Integer orderStatus;
@@ -48,6 +55,14 @@ public class OrderInfoEntity {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public Integer getOrderStatus() {

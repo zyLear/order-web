@@ -1,7 +1,6 @@
 package com.zylear.order.web.controller.api;
 
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.db.PageResult;
 import com.zylear.order.web.bean.base.Result;
 import com.zylear.order.web.bean.base.ResultMsg;
 import com.zylear.order.web.controller.api.response.AppOrderVo;
@@ -38,9 +37,9 @@ public class OrderController {
 
 
         if (StringUtils.isBlank(keyword)) {
-            all = orderInfoDao.findTenByOrderStatusOrderById(orderStatus);
+            all = orderInfoDao.findTenByOrderStatusOrderByIdDesc(orderStatus);
         } else {
-            all = orderInfoDao.findTenByOrderStatusAndPhoneNumberLikeOrderById(orderStatus, "%" + keyword + "%");
+            all = orderInfoDao.findTenByOrderStatusAndPhoneNumberLikeOrderByIdDesc(orderStatus, "%" + keyword + "%");
         }
 
         ArrayList<AppOrderVo> list = new ArrayList<>();
@@ -49,6 +48,7 @@ public class OrderController {
             appOrderVo.setId(orderInfoEntity.getId());
             appOrderVo.setPhoneNumber(orderInfoEntity.getPhoneNumber());
             appOrderVo.setRemark(orderInfoEntity.getRemark());
+            appOrderVo.setPrice(orderInfoEntity.getPrice());
             appOrderVo.setOrderStatus(orderInfoEntity.getOrderStatus());
             appOrderVo.setCreateTime(DateUtil.formatDateTime(orderInfoEntity.getCreateTime()));
             if (orderInfoEntity.getFinishTime() != null) {
@@ -70,10 +70,14 @@ public class OrderController {
         if (StringUtils.isBlank(createOrderRequest.getRemark())) {
             throw new CommonException(ResultMsg.PARAMS_ERROR.getCode(), "备注不能为空");
         }
+        if (createOrderRequest.getPrice() == null) {
+            throw new CommonException(ResultMsg.PARAMS_ERROR.getCode(), "金额不能为空");
+        }
 
         OrderInfoEntity orderInfoEntity = new OrderInfoEntity();
         orderInfoEntity.setOrderStatus(OrderStatus.init.getValue());
         orderInfoEntity.setRemark(createOrderRequest.getRemark());
+        orderInfoEntity.setPrice(createOrderRequest.getPrice());
         orderInfoEntity.setPhoneNumber(createOrderRequest.getPhoneNumber());
         orderInfoEntity.setCreateTime(new Date());
         orderInfoDao.save(orderInfoEntity);
@@ -85,7 +89,7 @@ public class OrderController {
     public Result create(@RequestBody CompleteOrderRequest createOrderRequest) {
 
         if (createOrderRequest.getId() == null) {
-            throw new CommonException(ResultMsg.PARAMS_ERROR.getCode(), "ID不能未空");
+            throw new CommonException(ResultMsg.PARAMS_ERROR.getCode(), "ID不能为空");
         }
 
         Optional<OrderInfoEntity> optional = orderInfoDao.findById(createOrderRequest.getId());

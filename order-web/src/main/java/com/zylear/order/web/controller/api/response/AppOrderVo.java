@@ -2,6 +2,7 @@ package com.zylear.order.web.controller.api.response;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -13,6 +14,8 @@ public class AppOrderVo {
     private String phoneNumber;
 
     private String remark;
+
+    private BigDecimal price;
 
     private Integer orderStatus;
 
