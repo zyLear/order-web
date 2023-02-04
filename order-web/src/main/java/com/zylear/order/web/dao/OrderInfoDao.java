@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface OrderInfoDao extends PagingAndSortingRepository<OrderInfoEntity, Long> {
 
-    List<OrderInfoEntity> findTenByOrderStatusOrderByIdDesc(int status);
+    List<OrderInfoEntity> findTenByOrderStatusOrderByLastUpdateTimeDesc(int status);
 
-    List<OrderInfoEntity> findTenByOrderStatusAndPhoneNumberLikeOrderByIdDesc(Integer orderStatus, String keyword);
+    List<OrderInfoEntity> findTenByOrderStatusAndPhoneNumberLikeOrderByLastUpdateTimeDesc(Integer orderStatus, String keyword);
 }

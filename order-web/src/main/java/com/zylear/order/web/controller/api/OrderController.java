@@ -37,9 +37,9 @@ public class OrderController {
 
 
         if (StringUtils.isBlank(keyword)) {
-            all = orderInfoDao.findTenByOrderStatusOrderByIdDesc(orderStatus);
+            all = orderInfoDao.findTenByOrderStatusOrderByLastUpdateTimeDesc(orderStatus);
         } else {
-            all = orderInfoDao.findTenByOrderStatusAndPhoneNumberLikeOrderByIdDesc(orderStatus, "%" + keyword + "%");
+            all = orderInfoDao.findTenByOrderStatusAndPhoneNumberLikeOrderByLastUpdateTimeDesc(orderStatus, "%" + keyword + "%");
         }
 
         ArrayList<AppOrderVo> list = new ArrayList<>();
