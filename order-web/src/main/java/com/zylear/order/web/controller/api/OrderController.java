@@ -13,6 +13,9 @@ import com.zylear.order.web.model.OrderInfoEntity;
 import com.zylear.order.web.util.ResultUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,18 +35,23 @@ public class OrderController {
 
     @GetMapping("/list")
     @ResponseBody
-    public Result list(@Param("orderStatus") Integer orderStatus, @Param("keyword") String keyword) {
-        List<OrderInfoEntity> all;
+    public Result list(@RequestParam(value = "orderStatus") Integer orderStatus,
+                       @RequestParam(value = "keyword") String keyword,
+                       @RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNumber,
+                       @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize) {
+        Page<OrderInfoEntity> all = null;
 
+
+        PageRequest pageRequest = PageRequest.of(pageNumber - 1, pageSize);
 
         if (StringUtils.isBlank(keyword)) {
-            all = orderInfoDao.findTenByOrderStatusOrderByLastUpdateTimeDesc(orderStatus);
+            all = orderInfoDao.findByOrderStatusOrderByLastUpdateTimeDesc(orderStatus, pageRequest);
         } else {
-            all = orderInfoDao.findTenByOrderStatusAndPhoneNumberLikeOrderByLastUpdateTimeDesc(orderStatus, "%" + keyword + "%");
+            all = orderInfoDao.findTenByOrderStatusAndPhoneNumberLikeOrderByLastUpdateTimeDesc(orderStatus, "%" + keyword + "%", pageRequest);
         }
 
         ArrayList<AppOrderVo> list = new ArrayList<>();
-        for (OrderInfoEntity orderInfoEntity : all) {
+        for (OrderInfoEntity orderInfoEntity : all.getContent()) {
             AppOrderVo appOrderVo = new AppOrderVo();
             appOrderVo.setId(orderInfoEntity.getId());
             appOrderVo.setPhoneNumber(orderInfoEntity.getPhoneNumber());
@@ -56,8 +64,9 @@ public class OrderController {
             }
             list.add(appOrderVo);
         }
+        PageImpl<AppOrderVo> pageResult = new PageImpl<>(list, pageRequest, all.getTotalElements());
 
-        return ResultUtil.success(list);
+        return ResultUtil.success(pageResult);
     }
 
     @PostMapping("/create-order")
