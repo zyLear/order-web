@@ -80,6 +80,7 @@ public class OrderController {
         orderInfoEntity.setPrice(createOrderRequest.getPrice());
         orderInfoEntity.setPhoneNumber(createOrderRequest.getPhoneNumber());
         orderInfoEntity.setCreateTime(new Date());
+        orderInfoEntity.setLastUpdateTime(new Date());
         orderInfoDao.save(orderInfoEntity);
         return ResultUtil.success();
     }
